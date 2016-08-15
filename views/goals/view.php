@@ -1,0 +1,52 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Goals */
+
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Goals', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="goals-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            //'id',
+            //'id_pull',
+            'title',
+            //'type',
+            //'repeat',
+            'priority',
+            //'begin',
+            'progress',
+            //'image',
+            [
+                'attribute'=>'image',
+                'value'=>'/goals/images/'.$model->image,
+                //'value'=>('<img src =' .'images/' . $model->image . ' height="200" width="200"' .   '>')
+                'format' => ['image',['width'=>'200','height'=>'200']],
+            ],
+            
+        ],
+    ]) 
+?>
+
+
+</div>
